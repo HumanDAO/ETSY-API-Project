@@ -1,60 +1,65 @@
 $(function() {
+    var Listings = new EtsyClient();
+    Listings.ActiveListings_Request();
+});
 
-    function EtsyClient(option) {
-        this.etsy_api_request = "https://openapi.etsy.com/v2/";
-        // this.version = "v2/";
-        // this.model = "listings/";
-        // this.filter = "active";
-        // this.js = ".js";
-        this.user = option.userID;
-        this.api_key = "2s69xib2039fs6asqnkosxfo"; //Roberto's key
-    }
+function EtsyClient(option) {
+    this.etsy_api_request = "https://openapi.etsy.com/v2/";
 
-    EtsyClient.prototype.ActiveListing_Request = function(){
-    	var model = "listings/";
-    	var filter = "active/";
-        var Etsy_Object = $.getJSON(this.etsy_api_request + model + filter + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
-            console.log(data);
+    ///// -------------- possibly not needed?
+    // this.version = "v2/";
+    // this.model = "listings/";
+    // this.filter = "active";
+    // this.js = ".js";
+    // this.user = option.userID;
+    ///// -------------- 
+    this.api_key = "2s69xib2039fs6asqnkosxfo"; //Roberto's key
+}
+
+EtsyClient.prototype.ActiveListings_Request = function() {
+    var model = "listings/";
+    var filter = "active/";
+    var json = $.getJSON(this.etsy_api_request + model + filter + ".js?api_key=" + this.api_key + "&callback=?");
+    var listingsTemplate = $.get('/templates/listings.tmpl');
     
-        var Fill_HTML = $('#listing').textContent;
-        var Fill_Template = _.template(9, Etsy_Object[id]);
-        
-        .then(function(data) {$('#listing').append(Fill_Template(data));
+    return $.when(json, listingsTemplate).then(function(data_result, tmpl_result) {
+        console.log(data_result, tmpl_result);
+
+        var data = data_result[0];
+        var tmpl_text = tmpl_result[0];
+        var templateFn = _.template(data);
+        var html_to_put_in_DOM = templateFn(tmpl_text);
+
+        $('html').append(html_to_put_in_DOM);
+
+        // var Fill_HTML = $('#listing').textContent;
+        // var Fill_Template = _.template(Etsy_Object(data));
+
+        // .then(function(data) {
+        // $('#listing').append(Fill_Template(data));
         // .then(Sliding());
-            });
-        }
+        // });
+    });
+}
+
+EtsyClient.prototype.IndividualListing_Request = function(id) {
+    var model = "listings/";
+    return $.getJSON(this.etsy_api_request + model + id + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
+        console.log(data);
 
     });
-    }
-   
-    
-    EtsyClient.prototype.IndividualListing_Request = function(id) {
-    	var model = "listings/";
-    	return $.getJSON(this.etsy_api_request + model + id + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
-        	console.log(data);
+}
 
+EtsyClient.prototype.UserID_Request = function() {
+    var model = "users/";
+    // var user_ID = "45265550";
+    return $.getJSON(this.etsy_api_request + model + this.user_ID + "/" + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
+        console.log(data);
     });
-	}
-
-	EtsyClient.prototype.UserID_Request = function() {
-		var model ="users/";
-		// var user_ID = "45265550";
-    	return $.getJSON(this.etsy_api_request + model + this.user_ID + "/" + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
-        	console.log(data);
-    });
-	}
-	
-	var Listings = new EtsyClient();
-	Listings.ActiveListings_Request();
- 
-
-
+}
 
 
 //     function Sliding (){
 //             $('#right').addEventListener('Click', SlidePicR);
 //             $('#left').addEventListener('CLick', SlidePicL);
 //         }
-
-
-});

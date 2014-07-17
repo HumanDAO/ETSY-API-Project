@@ -1,8 +1,5 @@
 *, *:before, *:after {
-	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	padding:0;
-	margin:0;
 }
 .container {
 	width:400px;
@@ -40,4 +37,8 @@ li {
 	margin:0 auto;
 	margin-top:10px;
 	border:2px solid green;
+}
+.listing {
+	padding: 2em;
+	border-top:2px solid black;
 }

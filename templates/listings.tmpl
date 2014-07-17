@@ -1,3 +1,7 @@
-<div id="listings">
-	<p>Listing: <%=listing_id %></p>
+<div class="listings">
+	<% _.forEach(results, function(result) { %>
+		<div class="listing">
+			<%= result.title %>
+		</div>
+	<% }); %>
 </div>
