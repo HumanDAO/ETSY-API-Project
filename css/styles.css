@@ -1,12 +1,25 @@
+:root {
+	--yellow: #077;
+}
+
 *, *:before, *:after {
 	box-sizing: border-box;
-	-webkit-transition: all 1s ease;
-	-webkit-box-sizing: border-box;
+	transition: all 1s ease;
 }
 body {
 	background-color: #555;
 }
-
+header {
+	width:100%;
+	height:175px;
+	background-color:#999;
+}
+ul {
+	display:block;
+}
+li {
+	display:inline-block;
+}
 .container {
 	vertical-align:top;
 	position:relative;
@@ -18,10 +31,12 @@ body {
 	left: 5%;
 	margin:15px;
 	background-color:#37D;
+	
 
 }
+
 .container:hover {
-	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
     background-color:#999;
     
 }
@@ -38,11 +53,11 @@ body {
 	border:2px solid green;
 	margin:0 auto;
 	margin-top:5px;
-	/*text-align: justify;*/
 	overflow:scroll;
 	line-height:1em;
 	text-align:left;
 	padding:20px;
+	color: var(--yellow);
 
 	/*position:absolute;
 	min-width:400px;*/

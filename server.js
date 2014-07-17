@@ -14,20 +14,23 @@ var express = require('express'),
 app.set('port', process.env.PORT || 3000);
 app.use(methodOverride());
 
-// app.get("*.css", function(req, res) { //*.css
-//     // console.log(req.url)
-//     var path = __dirname + req.url;
-//     fs.readFile(path, "utf8", function(err, data) {
-//         if (err) throw new Error(err);
-//         res.header("Content-type", "text/css");
-//         try {
-//             res.send(myth(data));
-//         } catch (e) {
-//             console.log(e);
-//             res.send(data);
-//         }
-//     });
-// });
+app.get("*.css", function(req, res) { //*.css
+    var path = __dirname + req.url;
+    fs.readFile(path, "utf8", function(err, data) {
+        res.header("Content-type", "text/css");
+        if (err) {
+            console.error("Yo dawg, I heard you like files that don't exist. ", err);
+            res.send("");
+            return;
+        }
+        try {
+            res.send(myth(data));
+        } catch (e) {
+            console.log(e);
+            res.send(data);
+        }
+    });
+});
 
 app.use(express.static(path.join(__dirname, '')));
 
