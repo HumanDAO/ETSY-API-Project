@@ -27,8 +27,8 @@ EtsyClient.prototype.ActiveListings_Request = function() {
 
         var data = data_result[0];
         var tmpl_text = tmpl_result[0];
-        var templateFn = _.template(data);
-        var html_to_put_in_DOM = templateFn(tmpl_text);
+        var templateFn = _.template(tmpl_text);
+        var html_to_put_in_DOM = templateFn(data);
 
         $('html').append(html_to_put_in_DOM);
 

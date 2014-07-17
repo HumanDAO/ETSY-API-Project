@@ -1,7 +1,24 @@
-<div class="listings">
-	<% _.forEach(results, function(result) { %>
-		<div class="listing">
-			<%= result.title %>
+
+	
+
+		<% _.forEach(results, function(result) { %>
+
+	<div class="container">
+		<div class="imgBox"></div>
+			<div class="title">
+				<%= result.title %>
+			</div>
+			
+			<div class="price">
+				<div class="priceText">
+					<%= result.price %>
+				</div>
+			</div>
+		
+
 		</div>
-	<% }); %>
-</div>
+		<% }); %>
+	</div>
+	
+
+
