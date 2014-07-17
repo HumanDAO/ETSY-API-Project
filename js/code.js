@@ -32,13 +32,6 @@ EtsyClient.prototype.ActiveListings_Request = function() {
 
         $('html').append(html_to_put_in_DOM);
 
-        // var Fill_HTML = $('#listing').textContent;
-        // var Fill_Template = _.template(Etsy_Object(data));
-
-        // .then(function(data) {
-        // $('#listing').append(Fill_Template(data));
-        // .then(Sliding());
-        // });
     });
 }
 
