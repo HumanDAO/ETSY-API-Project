@@ -1,24 +1,29 @@
 window.onload = app;
 
 function app() {
-	function clearPanel(){
-        // You can put some code in here to do fancy DOM transitions, such as fade-out or slide-in.
-    }
     
-    Path.map("#/users").to(function(){
-        document.querySelector('.container').innterText = "Users!"
+    EtsyClient.prototype.setupRouting = function(){
+    var self = this;
+
+    Path.map("#/").to(function() {
+        self.showListings();
     });
-    
-    Path.map("#/comments").to(function(){
-        alert("Comments!");
-    }).enter(clearPanel);
-    
-    Path.map("#/posts").to(function(){
-        alert("Posts!");
-    }).enter(clearPanel);
-    
-    Path.root("#/posts");
-    
+
+    Path.map("#/listing/:id").to(function() {
+        console.log(this);
+        self.showListing(this.params.id);
+    });
+
+    // set the default hash
+    Path.root("#/");
     Path.listen();
+
+    $( "#clickme" ).click(function() {
+    $( "#/Listings" ).fadeOut( "slow", function() {
+    // Animation complete.
+    });
+    });
+
 }
 	
+app();

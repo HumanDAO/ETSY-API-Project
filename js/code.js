@@ -131,14 +131,19 @@ EtsyClient.prototype.showListing = function(id) {
 
 
 EtsyClient.prototype.handleClickEvents = function() {
+    
     var self = this;
+    
     $(this.container).on('click', '.container > div', function() {
         console.log('clicking on:');
         console.log(this);
         self.showListing(this.getAttribute('listing'));
     });
+    
     $(this.container).on('click', '.back', function() {
         self.showListings();
+        console.log(this);
+
     });
     $(window).on('keydown', function(e) {
         if(e.which === 27) self.showListings();
