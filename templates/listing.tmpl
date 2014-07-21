@@ -1,1 +1,40 @@
-TEMPLATE 2
+	<div class="container">
+		<div class="imgBox">
+			<img src = '<%= MainImage.url_570xN %>'>
+		</div>
+			
+			<div class="title">
+				<%= title %>
+
+			</div>
+			
+			<div class="price">
+				<div class="priceText">
+					<%= price %>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+		<div class="container">
+
+		<div class="imgBox">
+			<img src = '<%= User.image_url_75x75 %>'>
+		</div>
+			
+			<div class="title">
+				<%= User.login_name %>
+				<%= user_id %>
+				
+
+			</div>
+			
+			<div class="price">
+			<!-- 	<div class="priceText">
+			</div> -->
+			</div>
+		</div>
+	</div>
+<div class="container">
+<button class="back">Back</button>
+</div>

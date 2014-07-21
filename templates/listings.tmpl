@@ -5,24 +5,27 @@
 		<li><a href="#">Nav3</a></li>
 	</ul>
 </header>
-	
 
-		<% _.forEach(results, function(result) { %>
+<% _.forEach(results, function(result) { %>
 
 	<div class="container">
-		<div class="imgBox"></div>
+		<div listing = '<%= result.listing_id %>'>
+			<div class="imgBox">
+				<img src = '<%= result.MainImage.url_570xN %>'>
+			</div>
+
 			<div class="title">
-				<%= result.title %>
+					<%= result.title %>
 			</div>
-			
+				
 			<div class="price">
-				<div class="priceText">
+					<div class="priceText">
 					<%= result.price %>
-				</div>
+					</div>
 			</div>
-		</div>
+			</div>
+			</div>
 	</div>
-	<% }); %>
+
+<% }); %>
 	
-
-

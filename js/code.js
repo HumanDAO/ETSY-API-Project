@@ -1,58 +1,161 @@
-$(function() {
-    var Listings = new EtsyClient();
-    Listings.ActiveListings_Request();
-});
+function EtsyClient(options) {
+    if (!options) {
+        throw new Error("Missing an options argument to EtsyClient()");
+    }
+    if (!options.api_key) {
+        throw new Error("Yo dawg, I heard you like APIs. Y U NO APIKEY!?!?");
+    }
 
-function EtsyClient(option) {
-    this.etsy_api_request = "https://openapi.etsy.com/v2/";
-
-    ///// -------------- possibly not needed?
-    // this.version = "v2/";
-    // this.model = "listings/";
-    // this.filter = "active";
-    // this.js = ".js";
-    // this.user = option.userID;
-    ///// -------------- 
-    this.api_key = "2s69xib2039fs6asqnkosxfo"; //Roberto's key
+    this.etsy_url = "https://openapi.etsy.com/";
+    this.version = options.api_version || "v2/";
+    this.api_key = options.api_key;
+    this.complete_api_url = this.etsy_url + this.version;
+    this.templates = {};
+  
+    // create a div container for EVARTHING
+    this.container = document.createElement('div');
+    document.body.appendChild(this.container);
+  
+    // handle events on container
+    this.handleClickEvents();
+  
+    // print the listings template
+    this.showListings();
 }
 
-EtsyClient.prototype.ActiveListings_Request = function() {
-    var model = "listings/";
-    var filter = "active/";
-    var json = $.getJSON(this.etsy_api_request + model + filter + ".js?api_key=" + this.api_key + "&callback=?");
-    var listingsTemplate = $.get('/templates/listings.tmpl');
-    
-    return $.when(json, listingsTemplate).then(function(data_result, tmpl_result) {
-        console.log(data_result, tmpl_result);
+/**  
+ * -----------------------------------------------------------------------------------------
+ * API FUNCTIONS (LISTINGS, LISTING, USER)
+ * -----------------------------------------------------------------------------------------
+ * All these return Promises (i.e. from $.get(), $.getJSON(), $.Deferred())
+ */
 
-        var data = data_result[0];
-        var tmpl_text = tmpl_result[0];
-        var templateFn = _.template(tmpl_text);
-        var html_to_put_in_DOM = templateFn(data);
+function pipeResults(d){ return d; }
 
-        $('html').append(html_to_put_in_DOM);
+EtsyClient.prototype.getActiveListings = function() {
+    var self = this;
 
+    var URIs = [
+        this.complete_api_url,
+        '/listings',
+        '/active',
+        ".js?api_key=",
+        this.api_key,
+        "&includes=MainImage",
+        "&callback=?"
+    ];
+
+    return $.getJSON(URIs.join('')).then(pipeResults);
+}
+
+EtsyClient.prototype.getListing = function(id) {
+    var URIs = [
+        this.complete_api_url,
+        '/listings',
+        '/'+ id,   
+        ".js?api_key=",
+        this.api_key,
+        "&includes=MainImage",
+        "&callback=?"
+    ];
+
+    return $.getJSON(URIs.join('')).then(pipeResults);
+}
+
+EtsyClient.prototype.getUser = function(user_id){
+    // users/:user_id/profile
+    var URIs = [
+        this.complete_api_url,
+        '/users',
+        '/' + user_id,
+        "/profile",
+        ".js?api_key=",
+        this.api_key,
+        "&includes=MainImage",
+        "&callback=?"
+    ];
+
+    return $.getJSON(URIs.join('')).then(pipeResults);
+}
+
+
+/**
+ * -----------------------------------------------------------------------------------------
+ * TEMPLATE-GRABBING FUNCTIONS
+ * -----------------------------------------------------------------------------------------
+ * All these return Promises (i.e. from $.get(), $.getJSON(), $.Deferred())
+ */
+
+EtsyClient.prototype.getTemplate = function(url) {
+    var self = this;
+    if (!window._ || !window._.template) throw new Error("Did you forget to load lodash?");
+    return $.get(url).then(function(tmpl) {
+        // self.templates[url] = _.template(tmpl);
+        return _.template(tmpl);
     });
 }
 
-EtsyClient.prototype.IndividualListing_Request = function(id) {
-    var model = "listings/";
-    return $.getJSON(this.etsy_api_request + model + id + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
+/**
+ * -----------------------------------------------------------------------------------------
+ * UI FUNCTIONS
+ * -----------------------------------------------------------------------------------------
+ * All these use the Promises from the other functions in a $.when()
+ */
+
+EtsyClient.prototype.showListings = function() {
+    var self = this;
+    $.when(
+        this.getTemplate('./templates/listings.tmpl'),
+        this.getActiveListings()
+    ).then(function(template, data) {
         console.log(data);
+        self.container.innerHTML = template(data);
+    });
+}
+
+EtsyClient.prototype.showListing = function(id) {
+    var self = this;
+    $.when(
+        this.getTemplate('./templates/listing.tmpl'),
+        this.getListing(id)
+    ).then(function(template, data) {
+        
+        self.getUser(data.results[0].user_id).then(function(user){
+            data.results[0].User = user.results[0];
+            console.log(data)
+            self.container.innerHTML = template(data.results[0]);
+        });
 
     });
 }
 
-EtsyClient.prototype.UserID_Request = function() {
-    var model = "users/";
-    // var user_ID = "45265550";
-    return $.getJSON(this.etsy_api_request + model + this.user_ID + "/" + ".js?api_key=" + this.api_key + "&callback=?").then(function(data) {
-        console.log(data);
+
+EtsyClient.prototype.handleClickEvents = function() {
+    var self = this;
+    $(this.container).on('click', '.container > div', function() {
+        console.log('clicking on:');
+        console.log(this);
+        self.showListing(this.getAttribute('listing'));
+    });
+    $(this.container).on('click', '.back', function() {
+        self.showListings();
+    });
+    $(window).on('keydown', function(e) {
+        if(e.which === 27) self.showListings();
     });
 }
 
+/**
+ * -----------------------------------------------------------------------------------------
+ * THE APP ENTRY POINT
+ * -----------------------------------------------------------------------------------------
+ * All these use the Promises from the other functions in a $.when()
+ */
 
-//     function Sliding (){
-//             $('#right').addEventListener('Click', SlidePicR);
-//             $('#left').addEventListener('CLick', SlidePicL);
-//         }
+window.onload = app;
+
+function app() {
+    var etsy = new EtsyClient({
+        api_key: "4a53qesm1vkbho586qara8kf"
+    });
+}
