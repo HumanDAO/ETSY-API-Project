@@ -57,7 +57,7 @@ button:active {
 .container:hover {
 	transform: scale(1.02);
     background-color:#999;
-    box-shadow:35px 35px 35px;
+    box-shadow:10px 10px 10px;
     
 }
 .imgBox {
