@@ -21,6 +21,25 @@ function EtsyClient(options) {
   
     // print the listings template
     this.showListings();
+
+    this.setupRouting();
+}
+
+ EtsyClient.prototype.setupRouting = function(){
+    var self = this;
+
+    Path.map("#/Listings").to(function() {
+        self.showListings();
+    });
+
+    Path.map("#/listing/:id").to(function() {
+        console.log(this);
+        self.showListing(this.params.id);
+    });
+
+    // set the default hash
+    Path.root("#/");
+    Path.listen();
 }
 
 /**  

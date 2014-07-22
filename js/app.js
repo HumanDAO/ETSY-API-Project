@@ -5,7 +5,7 @@ function app() {
     EtsyClient.prototype.setupRouting = function(){
     var self = this;
 
-    Path.map("#/").to(function() {
+    Path.map("#/Listings").to(function() {
         self.showListings();
     });
 
@@ -18,11 +18,11 @@ function app() {
     Path.root("#/");
     Path.listen();
 
-    $( "#clickme" ).click(function() {
-    $( "#/Listings" ).fadeOut( "slow", function() {
-    // Animation complete.
-    });
-    });
+    // $( "li" ).click(function() {
+    // $( "#/Listings" ).fadeOut( "slow", function() {
+    // // Animation complete.
+    // });
+    // });
 
 }
 	
