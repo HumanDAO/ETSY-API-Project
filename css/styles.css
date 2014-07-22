@@ -4,21 +4,42 @@
 
 *, *:before, *:after {
 	box-sizing: border-box;
-	/*transition: all 1s ease;*/
+	transition: all .25s ease;
 }
 body {
+
 	background-color: #555;
 }
 header {
 	width:100%;
-	height:175px;
+	height:80px;
 	background-color:#999;
 }
 ul {
-	display:block;
+	position:relative;
+	top:50px;
 }
 li {
 	display:inline-block;
+}
+li a {
+	text-decoration:none;
+	color:#111;
+
+}
+li a:hover {
+	transform:scale(1.1, 4);
+}
+button {
+	position:absolute;
+	top:600px;
+	width:90px;
+
+}
+button:active {
+	box-shadow:2px 2px 2px;
+	background-color:#222;
+
 }
 .container {
 	vertical-align:top;
@@ -34,7 +55,7 @@ li {
 }
 
 .container:hover {
-	transform: scale(1.1);
+	transform: scale(1.02);
     background-color:#999;
     box-shadow:35px 35px 35px;
     
@@ -45,6 +66,26 @@ li {
 	margin:0 auto;
 	margin-top:5px;
 
+}
+.userBox {
+	vertical-align:top;
+	position:relative;
+	width:20%;
+	height:200px;
+	display:inline-block;
+	top: 50%;
+	left: 5%;
+	margin:15px;
+	background-color:#222;
+}
+
+
+.userImg img {
+	border-radius: 50%;
+	text-align:center;
+	width:25%;
+	margin-left: auto;
+	margin-right: auto;
 }
 .imgBox img {
 	height:100%;
@@ -61,7 +102,7 @@ li {
 	line-height:1em;
 	text-align:left;
 	padding:20px;
-	color: var(--yellow);
+	color: #222;
 
 	/*position:absolute;
 	min-width:400px;*/

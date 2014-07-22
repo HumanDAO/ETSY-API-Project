@@ -1,3 +1,5 @@
+
+	<a href="#/listing/:id">
 	<div class="container">
 		<div class="imgBox">
 			<img src = '<%= MainImage.url_570xN %>'>
@@ -5,35 +7,34 @@
 			
 			<div class="title">
 				<%= title %>
-
 			</div>
 			
 			<div class="price">
 				<div class="priceText">
 					<%= price %>
+				</div>
 			</div>
-			</div>
-		</div>
-	</div>
+		
+	</div></a>
 	
-		<div class="container">
+		<div class="userBox">
 
-		<div class="imgBox">
+		<div class="userImg">
 			<img src = '<%= User.image_url_75x75 %>'>
 		</div>
 			
-			<div class="title">
+			<div class="user">
 				<%= User.login_name %>
 				<%= user_id %>
 				
 
 			</div>
 			
-			<div class="price">
+			<!-- <div class="price"> -->
 			<!-- 	<div class="priceText">
 			</div> -->
-			</div>
+			<!-- </div> -->
 		</div>
 	</div>
+	<button class="back">Back</button>
 
-<button class="back">Back</button>

@@ -17,10 +17,10 @@ function EtsyClient(options) {
     document.body.appendChild(this.container);
   
     // handle events on container
-    this.handleClickEvents();
+    // this.handleClickEvents();
   
     // print the listings template
-    this.showListings();
+    // this.showListings();
 
     this.setupRouting();
 }
@@ -28,7 +28,7 @@ function EtsyClient(options) {
  EtsyClient.prototype.setupRouting = function(){
     var self = this;
 
-    Path.map("#/Listings").to(function() {
+    Path.map("#/").to(function() {
         self.showListings();
     });
 
@@ -149,25 +149,25 @@ EtsyClient.prototype.showListing = function(id) {
 }
 
 
-EtsyClient.prototype.handleClickEvents = function() {
+// EtsyClient.prototype.handleClickEvents = function() {
     
-    var self = this;
+//     var self = this;
     
-    $(this.container).on('click', '.container > div', function() {
-        console.log('clicking on:');
-        console.log(this);
-        self.showListing(this.getAttribute('listing'));
-    });
+//     $(this.container).on('click', '.container > div', function() {
+//         console.log('clicking on:');
+//         console.log(this);
+//         self.showListing(this.getAttribute('listing'));
+//     });
     
-    $(this.container).on('click', '.back', function() {
-        self.showListings();
-        console.log(this);
+//     $(this.container).on('click', '.back', function() {
+//         self.showListings();
+//         console.log(this);
 
-    });
-    $(window).on('keydown', function(e) {
-        if(e.which === 27) self.showListings();
-    });
-}
+//     });
+//     $(window).on('keydown', function(e) {
+//         if(e.which === 27) self.showListings();
+//     });
+// }
 
 /**
  * -----------------------------------------------------------------------------------------
