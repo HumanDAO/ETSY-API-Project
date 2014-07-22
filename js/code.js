@@ -31,9 +31,8 @@ function EtsyClient(options) {
     Path.map("#/").to(function() {
         self.showListings();
     });
-
     Path.map("#/listing/:id").to(function() {
-        console.log(this);
+        // console.log(this);
         self.showListing(this.params.id);
     });
 
@@ -127,7 +126,7 @@ EtsyClient.prototype.showListings = function() {
         this.getTemplate('./templates/listings.tmpl'),
         this.getActiveListings()
     ).then(function(template, data) {
-        console.log(data);
+        // console.log(data);
         self.container.innerHTML = template(data);
     });
 }
@@ -141,9 +140,11 @@ EtsyClient.prototype.showListing = function(id) {
         
         self.getUser(data.results[0].user_id).then(function(user){
             data.results[0].User = user.results[0];
-            console.log(data)
+            console.log(data);
             self.container.innerHTML = template(data.results[0]);
         });
+    // self.container.innerHTML = template(data.results[0]);
+    // console.log(data.results);
 
     });
 }
