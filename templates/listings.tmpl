@@ -1,5 +1,6 @@
 <% _.forEach(results, function(result) { %>
 <a href="#/listing/<%= result.listing_id %>">
+	
 	<div class="container">
 		<div listing = '<%= result.listing_id %>'>
 			<div class="imgBox">
@@ -12,13 +13,15 @@
 				
 			<div class="price">
 					<div class="priceText">
-					<%= result.price %>
+					$<%= result.price %>
 					</div>
 			</div>
 			</div>
 			</div>
 	</div>
+
 </a>
+
 
 <% }); %>
 	

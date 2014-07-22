@@ -36,6 +36,12 @@ function EtsyClient(options) {
         self.showListing(this.params.id);
     });
 
+    Path.map("#/item/:id").to(function() {
+        // console.log(this);
+        self.showListing(this.params.id);
+    });
+
+
     // set the default hash
     Path.root("#/");
     Path.listen();

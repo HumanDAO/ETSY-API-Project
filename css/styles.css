@@ -1,149 +1,129 @@
 :root {
-	--yellow: yellow;
+    --yellow: yellow;
 }
-
 *, *:before, *:after {
-	box-sizing: border-box;
-	transition: all .25s ease;
+    box-sizing: border-box;
+    transition: all .25s ease;
 }
 body {
-	font-family:"Lucida Console", Monaco, monospace;
-	background-color: #555;
+    font-family: "Lucida Console", Monaco, monospace;
+    background-color: #FFF;
+    width:100%;
+    margin:0 auto;
+    padding: 0 0 0 0;
 }
 header {
-	width:100%;
-	height:80px;
-	border:1px solid black;
-	background-color:#999;
+    width: 100%;
+    height: 80px;
+    border: 1px solid #999;
+    background-color: #234547;
+    background-image: url(http://www.transparenttextures.com/patterns/honey-im-subtle.png);
 }
 p {
-	padding-left:30px;
+    padding-left: 30px;
 }
 ul {
-	position:relative;
-	top:-5px;
+    position: relative;
+    top: -5px;
 }
 li {
-	display:inline-block;
+    display: inline-block;
 }
 li a {
-	text-decoration:none;
-	color:#111;
-
+    text-decoration: none;
+    color: #111;
 }
 li a:hover {
-	transform:scale(1.1, 4);
-	color:aqua;
+    transform: scale(1.1, 4);
+    color: #EEE;
 }
-button {
-	position:absolute;
-	top:600px;
-	width:90px;
-	color:black;
-	margin-left:auto;
-	margin-right:auto;
 
-}
-button:active {
-	box-shadow:2px 2px 2px;
-	background-color:#222;
-
-}
 .container {
-	vertical-align:top;
-	position:relative;
-	width:20%;
-	height:450px;
-	display:inline-block;
-	top: 50%;
-	left: 5%;
-	margin:15px;
-	background-color:#37D;
-
+    vertical-align: top;
+    position: relative;
+    width: 20%;
+    height: 450px;
+    display: inline-block;
+    top: 50%;
+    left: 5%;
+    margin: 15px;
+    background-color: #FFF;
+    border: 1px dashed lightgrey;
 }
-
 .container:hover {
-	transform: scale(1.02);
-    background-color:#999;
-    box-shadow:0px 0px 120px #222;
-
-    
+    transform: scale(1.02);
+    background-color: #FFF;
+    box-shadow: 0px 0px 120px #AAA;
 }
-.imgBox {
-	height:50%;
-	width:95%;
-	margin:0 auto;
-	margin-top:5px;
 
+.imgBox {
+    height: 50%;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 5px;
 }
 .userBox {
-	vertical-align:top;
-	position: absolute;
-	/*width:18%;*/
-	height:150px;
-	display:inline-block;
-	top: 10%;
-	margin:15px;
-	background-color:#37D;
-	padding-left:10px;
-	padding-right:10px;
-	padding-top:25px;
-	color:#222;
-	right:20px;
-	border:2px dotted black;
-
-
+    vertical-align: top;
+    position: absolute;
+    /*width:18%;*/
+    height: 150px;
+    display: inline-block;
+    top: 10%;
+    margin: 15px;
+    background-color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 25px;
+    color: #222;
+    right: 20px;
+    border: 5px solid rgba(155, 224, 239, 1);
 }
-
-
 .userImg img {
-	border-radius: 50%;
-	/*text-align:center;*/
-	width:30%;
+    border-radius: 50%;
+    /*text-align:center;*/
+    width: 30%;
 }
 .imgBox img {
-	height:100%;
-	width:100%;
-	max-height:250px;
-	max-width:300px;
+    height: 100%;
+    width: 100%;
+    max-height: 250px;
 }
 .title {
-	border:1px inset gray;
-	height: 130px;
-	max-width:95%;
-	margin:0 auto;
-	margin-top:5px;
-	overflow:scroll;
-	line-height:1em;
-	text-align:left;
-	padding:20px;
-	color: #555;
-
-	/*position:absolute;
-	min-width:400px;*/
+    border: 1px inset #DDD;
+    height: 130px;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-top: 5px;
+    overflow: scroll;
+    line-height: 1em;
+    text-align: top;
+    padding: 15px;
+    padding-top: 5px;
+    color: #222;
 }
 .title:hover {
-	color:#DDD;
+    border: 1px outset #DDD;
 }
-
 .price {
-	border-radius:50%;
-	color:black;
-	border:2px solid black;
-	min-width:50px;
-	height:40px;
-	text-align:center;
-	position:absolute;
-	bottom: 1%;
-	right:5px;
-	/*right:30px;*/
+    border-radius: 10%;
+    color: white;
+    font-weight: 900;
+    background-color: #59b37d;
+    background-image: url(http://www.webdesignhot.com/wp-content/uploads/2013/07/Grey-Real-Carbon-Fiber-Background-Vector-Graphic_thumb.jpg);
+    border: 2px solid #bbb;
+    min-width: 50px;
+    height: 40px;
+    text-align: center;
+    position: absolute;
+    bottom: 1%;
+    padding: 0px 5px;
+    right: 8px;
+    /*right:30px;*/
 }
 .priceText {
-	/*letter-spacing: 1px;*/
-	margin-top:4px;
+    /*letter-spacing: 1px;*/
+    margin-top: 4px;
 }
-
-
 /*li {
 	display:inline-block;
 	height:80px;
