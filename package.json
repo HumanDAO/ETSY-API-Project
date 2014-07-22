@@ -1,5 +1,5 @@
 {
-  "name": "Parallaxin-Node-Stuff",
+  "name": "ETSYAPI",
   "version": "0.0.0",
   "description": "derp WAT",
   "main": "server.js",
@@ -8,6 +8,9 @@
     "method-override": "^2.1.1",
     "myth": "^1.1.0"
   },
+  "engines": {
+    "node": "0.10.x"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/TIY-Houston-Q3-Front-End/Parallaxin-Node-Stuff.git"
+    "url": "git://github.com/TIY-Houston-Q3-Front-End/ETSY-API-Project.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TIY-Houston-Q3-Front-End/Parallaxin-Node-Stuff/issues"
+    "url": "https://github.com/TIY-Houston-Q3-Front-End/ETSY-API-Project/issues"
   },
-  "homepage": "https://github.com/TIY-Houston-Q3-Front-End/Parallaxin-Node-Stuff"
+  "homepage": "https://github.com/TIY-Houston-Q3-Front-End/ETSY-API-Project"
 }

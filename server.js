@@ -11,7 +11,7 @@ var express = require('express'),
     methodOverride = require('method-override');
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.argv[2] || process.env.PORT || 3000);
 app.use(methodOverride());
 
 app.get("*.css", function(req, res) { //*.css
@@ -37,4 +37,3 @@ app.use(express.static(path.join(__dirname, '')));
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
 });
-
