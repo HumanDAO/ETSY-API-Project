@@ -55,7 +55,18 @@ li a:hover {
     background-color: #FFF;
     box-shadow: 0px 0px 120px #AAA;
 }
-
+.buy {
+	position:absolute;
+	bottom:90px;
+	text-decoration:none;
+	font-weight:900;
+	font-size: 1.5em;
+	color:#999;
+	font-style:italic;
+}
+.buy:hover {
+	transform: scale(1.1, 2);
+}
 .imgBox {
     height: 50%;
     width: 95%;
