@@ -1,7 +1,7 @@
 ETSY-API-Project
 =================
 
-###Utilize ETSY REST API to build our own Web App.
+###Used the ETSY REST API in order build a third party Web App:
 
 
 We used in this project the following tools and frameworks:
@@ -16,6 +16,6 @@ We used in this project the following tools and frameworks:
 
 
 >1. If domain/url/app changes, then git "remote remove heroku"
->2. "git remote add heroku <url>"
+>2. "git remote add heroku (url)"
 >3. "git remote -v"
 >4. 
