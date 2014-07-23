@@ -12,7 +12,7 @@ We used in this project the following tools and frameworks:
 >- Lodash
 >- Temp DB
 
-###Instructions for Heroku on Terminal
+###Git instructions for Heroku Server via Terminal
 
 
 >1. If domain/url/app changes, then git "remote remove heroku"
