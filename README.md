@@ -1,7 +1,7 @@
 ETSY-API-Project
 =================
 
-###Used the ETSY REST API in order build a third party Web App:
+###Used the ETSY REST API in order to show item listings:
 
 
 We used in this project the following tools and frameworks:
